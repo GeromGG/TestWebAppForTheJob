@@ -16,11 +16,12 @@ namespace TestWebAppForTheJob.Data.Models
             DateOfUpdate = DateTime.Now;
         }
 
+        public int Id { get; set; }
         public string Inn { get; set; }
         public string Name { get; set; }
         public bool Type { get; set; } //создать свой класс?!
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
-
+        public List<Founder> Founder { get; set; }
     }
 }
