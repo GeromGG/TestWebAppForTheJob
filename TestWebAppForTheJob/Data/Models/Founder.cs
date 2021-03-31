@@ -7,8 +7,9 @@ namespace TestWebAppForTheJob.Data.Models
 {
     public class Founder
     {
-        public Founder(string inn, string fullName)
+        public Founder(int id, string inn, string fullName)
         {
+            Id = id;
             Inn = inn;
             FullName = fullName;
             DateAdded = DateTime.Now;
