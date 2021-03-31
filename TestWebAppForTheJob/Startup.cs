@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TestWebAppForTheJob.Data.Interfaces;
+using TestWebAppForTheJob.Data.Mocks;
 
 namespace TestWebAppForTheJob
 {
@@ -18,6 +20,8 @@ namespace TestWebAppForTheJob
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IAllClient, MockClient>();
+            services.AddTransient<IClientFounders, MockFounder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
