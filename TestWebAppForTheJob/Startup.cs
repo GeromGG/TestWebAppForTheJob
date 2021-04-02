@@ -33,7 +33,6 @@ namespace TestWebAppForTheJob
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseRouting();
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();

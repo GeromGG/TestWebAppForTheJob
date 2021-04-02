@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestWebAppForTheJob.Data.Interfaces;
+using TestWebAppForTheJob.ViewModels;
 
 namespace TestWebAppForTheJob.Controllers
 {
@@ -20,8 +21,10 @@ namespace TestWebAppForTheJob.Controllers
 
         public ViewResult ListClients()
         {
-            var clients = _allClients.Clients;
-            return View(clients);
+            ClientListViewModel obj = new ClientListViewModel();
+            obj.AllClient = _allClients.Clients;
+            obj.ClientFounder = "Клиенты";
+            return View(obj);
         }
     }
 }
