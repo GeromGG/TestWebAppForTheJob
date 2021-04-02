@@ -13,16 +13,31 @@
     <title>ListClients</title>
 </head>
 <body>
-    <h1>Все клиенты</h1>
+    <h1>Все клиенты:</h1>
+    <h1></h1>
     @{
         foreach (var client in Model) /*сделать вывод на листбокс*/
         {
-        <div>
-            <h2>Клиент: @client.Name</h2>
-            <h2>ИНН: @client.Inn</h2>
-            <h2>Тип: @client.IsEntrepreneur.ToString()</h2>
-            <h2>===================================</h2>
-        </div>
+            <div>
+                <h2>Клиент: @client.Name</h2>
+                <h2>ИНН: @client.Inn</h2>
+                <h2>Тип: @client.IsEntrepreneur.ToString()</h2>
+                <h2>Дата добавления: @client.DateAdded</h2>
+                <h2>Дата обновления: @client.DateOfUpdate</h2>
+                <h2>
+                    Учредители:
+                </h2>
+
+                    @{
+                        foreach (var founder in client.Founders)
+                        {
+                            <h3>@founder.FullName</h3>
+                        }
+                    }
+
+                
+                <h2>===================================</h2>
+            </div>
         }
     }
 </body>
