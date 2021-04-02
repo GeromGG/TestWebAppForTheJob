@@ -5,19 +5,19 @@
         foreach (var client in Model.AllClient) /*сделать вывод на листбокс?!*/
         {
             <div class="col-lg-4">
-                <h2>Клиент: @client.Name</h2>
-                <h2>ИНН: @client.Inn</h2>
-                <h2>Тип: @client.IsEntrepreneur.ToString()</h2>
-                <h2>Дата добавления: @client.DateAdded</h2>
-                <h2>Дата обновления: @client.DateOfUpdate</h2>
-                <h2>
+                <p>Клиент: @client.Name</p>
+                <p>ИНН: @client.Inn</p>
+                <p>Тип: @client.IsEntrepreneur.ToString()</p>
+                <p>Дата добавления: @client.DateAdded</p>
+                <p>Дата обновления: @client.DateOfUpdate</p>
+                <p>
                     Учредители:
-                </h2>
+                </p>
 
                 @{
                     foreach (var founder in client.Founders)
                     {
-                        <h3>@founder.FullName</h3>
+                        <p>@founder.FullName</p>
                     }
                 }
             </div>
