@@ -1,4 +1,6 @@
-﻿
+﻿@using TestWebAppForTheJob.Data.Models;
+@model IEnumerable<Client>;
+
 @{
     Layout = null;
 }
@@ -11,5 +13,17 @@
     <title>ListClients</title>
 </head>
 <body>
+    <h1>Все клиенты</h1>
+    @{
+        foreach (var client in Model) /*сделать вывод на листбокс*/
+        {
+        <div>
+            <h2>Клиент: @client.Name</h2>
+            <h2>ИНН: @client.Inn</h2>
+            <h2>Тип: @client.IsEntrepreneur.ToString()</h2>
+            <h2>===================================</h2>
+        </div>
+        }
+    }
 </body>
 </html>
