@@ -6,7 +6,7 @@ using TestWebAppForTheJob.Data.Models;
 
 namespace TestWebAppForTheJob.Data.Interfaces
 {
-    public interface IAllClient
+    public interface IAllClients
     {
         IEnumerable<Client> Clients { get; }
         IEnumerable<Client> GetEntity { get; set; }

@@ -18,6 +18,7 @@ namespace TestWebAppForTheJob.Data.Mocks
                     new Founder(id:1, inn:"000000000001", fullName:"Иванов Иван Иванович"),
                     new Founder(id:2, inn:"000000000002", fullName:"Петров Петр Петрович"),
                     new Founder(id:3, inn:"000000300001", fullName:"Сидоров Сидор Сидорович"),
+                    new Founder(id:4, inn:"060000304001", fullName:"Артёмов Артём Артёмович"),
                 };
             } 
         }

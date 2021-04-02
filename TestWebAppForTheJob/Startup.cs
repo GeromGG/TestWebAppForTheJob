@@ -20,7 +20,7 @@ namespace TestWebAppForTheJob
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IAllClient, MockClient>();
+            services.AddTransient<IAllClients, MockClient>();
             services.AddTransient<IClientFounders, MockFounder>();
         }
 

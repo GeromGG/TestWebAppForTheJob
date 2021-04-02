@@ -7,19 +7,22 @@ using TestWebAppForTheJob.Data.Models;
 
 namespace TestWebAppForTheJob.Data.Mocks
 {
-    public class MockClient : IAllClient
+    public class MockClient : IAllClients
     {
         private readonly IClientFounders _clientFounders = new MockFounder();
-        public IEnumerable<Client> Clients 
+
+        public IEnumerable<Client> Clients
         {
-            get {
+            get
+            {
                 return new List<Client>
                 {
-                    new Client(id:0, inn:"123456789000", name:"ФондИвест", type: true, founder: _clientFounders.AllFounders.First()),
-                    new Client(id:1, inn:"123456789033", name:"Моэстро", type: false, founder: _clientFounders.AllFounders.Last()),
-                    new Client(id:2, inn:"123456789056", name:"ГолдБест", type: true, founder: _clientFounders.AllFounders.First()),
+                    new Client(id:0, inn:"123456789000", name:"ФондИвест", isEntrepreneur: false, founder: new List<Founder>(){_clientFounders.AllFounders.ElementAt(0), _clientFounders.AllFounders.ElementAt(3)}),
+                    new Client(id:1, inn:"123456789033", name:"Моэстро", isEntrepreneur: false, founder: new List<Founder>(){_clientFounders.AllFounders.ElementAt(1), _clientFounders.AllFounders.ElementAt(2)}),
+                    new Client(id:2, inn:"123456789056", name:"ГолдБест", isEntrepreneur: true, founder: new List<Founder>(){_clientFounders.AllFounders.ElementAt(4)}),
+
                 };
-            } 
+            }
         }
 
         public IEnumerable<Client> GetEntity { get; set; }

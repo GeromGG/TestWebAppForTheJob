@@ -7,24 +7,24 @@ namespace TestWebAppForTheJob.Data.Models
 {
     public class Client
     {
-        public Client(int id, string inn, string name, bool type, Founder founder)
+        public Client(int id, string inn, string name, bool isEntrepreneur, List<Founder> founder)
         {
             Id = id;
             Inn = inn;
             Name = name;
-            Type = type;
+            IsEntrepreneur = isEntrepreneur;
 
             DateAdded = DateTime.Now;
             DateOfUpdate = DateTime.Now;
 
             Founders = new List<Founder>();
-            Founders.Add(founder);
+            Founders.AddRange(founder);
         }
 
         public int Id { get; set; }
         public string Inn { get; set; }
         public string Name { get; set; }
-        public bool Type { get; set; } //создать свой класс?!
+        public bool IsEntrepreneur { get; set; }  
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
         public List<Founder> Founders { get; set; }

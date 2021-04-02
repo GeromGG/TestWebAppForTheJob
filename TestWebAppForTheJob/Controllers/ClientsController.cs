@@ -7,21 +7,21 @@ using TestWebAppForTheJob.Data.Interfaces;
 
 namespace TestWebAppForTheJob.Controllers
 {
-    public class ClientController : Controller
+    public class ClientsController : Controller
     {
-        private readonly IAllClient _allClient;
+        private readonly IAllClients _allClients;
         private readonly IClientFounders _clientFounders;
 
-        public ClientController(IAllClient allClient, IClientFounders clientFounders)
+        public ClientsController(IAllClients allClients, IClientFounders clientFounders)
         {
-            _allClient = allClient;
+            _allClients = allClients;
             _clientFounders = clientFounders;
         }
 
-        public ViewResult ListClient()
+        public ViewResult ListClients()
         {
-            var client = _allClient.Clients;
-            return View(client);
+            var clients = _allClients.Clients;
+            return View(clients);
         }
     }
 }
