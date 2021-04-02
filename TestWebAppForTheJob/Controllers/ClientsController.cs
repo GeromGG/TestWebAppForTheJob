@@ -21,9 +21,9 @@ namespace TestWebAppForTheJob.Controllers
 
         public ViewResult ListClients()
         {
+            ViewBag.Title = "Страница с клиентами";
             ClientListViewModel obj = new ClientListViewModel();
             obj.AllClient = _allClients.Clients;
-            obj.ClientFounder = "Клиенты";
             return View(obj);
         }
     }
