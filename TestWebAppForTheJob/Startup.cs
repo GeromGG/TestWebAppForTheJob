@@ -20,6 +20,7 @@ namespace TestWebAppForTheJob
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IAllClients, MockClient>();
             services.AddTransient<IClientFounders, MockFounder>();
         }
@@ -32,10 +33,10 @@ namespace TestWebAppForTheJob
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            //app.UseRouting();
             app.UseStaticFiles();
             app.UseStatusCodePages();
-            //app.UseMvcWithDefaultRoute();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
