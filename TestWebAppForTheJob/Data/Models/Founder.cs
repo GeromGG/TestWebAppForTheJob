@@ -7,9 +7,14 @@ namespace TestWebAppForTheJob.Data.Models
 {
     public class Founder
     {
-        public Founder(int id, string inn, string fullName)
+        public Founder() 
+        { 
+
+        }
+        public Founder(int clientId, string inn, string fullName)
         {
-            Id = id;
+            //Id = id;
+            ClientId = clientId;
             Inn = inn;
             FullName = fullName;
             DateAdded = DateTime.Now;
@@ -18,9 +23,10 @@ namespace TestWebAppForTheJob.Data.Models
 
         public int Id { get; set; }
         public string Inn { get; set; }
-        public string FullName { get; set; } //создать свой класс?!
+        public string FullName { get; set; }
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; } 
         public virtual Client Client { get; set; }
+        public int ClientId { get; set; }
     }
 }

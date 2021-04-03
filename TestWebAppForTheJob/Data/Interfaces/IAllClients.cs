@@ -9,8 +9,8 @@ namespace TestWebAppForTheJob.Data.Interfaces
     public interface IAllClients
     {
         IEnumerable<Client> Clients { get; }
-        IEnumerable<Client> GetEntity { get; set; }
-        IEnumerable<Client> GetIndividualEntrepreneur { get; set; }
+        IEnumerable<Client> GetEntity { get;}
+        IEnumerable<Client> GetIndividualEntrepreneur { get;}
         Client GetObjectClient(int clientID);
     }
 }
