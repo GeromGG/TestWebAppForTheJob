@@ -26,5 +26,13 @@ namespace TestWebAppForTheJob.Controllers
             obj.AllClient = _allClients.Clients;
             return View(obj);
         }
+
+        public ViewResult InputFormClient()
+        {
+            ViewBag.Title = "Форма добавления клиента";
+            InputFormClientViewModel obj = new InputFormClientViewModel();
+            obj.AllClient = _allClients.Clients;
+            return View(obj);
+        }
     }
 }

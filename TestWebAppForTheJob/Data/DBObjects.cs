@@ -18,9 +18,11 @@ namespace TestWebAppForTheJob.Data
             }
             if (!context.Clients.Any())
             {
-                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders["1"], Founders["2"]});
-                new Client(inn: "123456789033", name: "Моэстро", isEntrepreneur: false, founder: new List<Founder>() { Founders["0"], Founders["3"] });
-                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders["4"]});
+                context.AddRange(
+                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders["1"], Founders["2"]}),
+                new Client(inn: "123456789033", name: "Моэстро", isEntrepreneur: false, founder: new List<Founder>() { Founders["0"], Founders["3"] }),
+                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders["4"]})
+                );
             }
             context.SaveChanges();
         }

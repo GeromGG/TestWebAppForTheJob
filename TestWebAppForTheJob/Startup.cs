@@ -50,6 +50,12 @@ namespace TestWebAppForTheJob
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Clients}/{action=ListClients}/{id?}");
+            });
 
 
             using (var scope = app.ApplicationServices.CreateScope())
