@@ -5,33 +5,29 @@
             <div class="container col-sm-6">
                 <label for="firstName" class="form-label">ИНН</label>
                 <input type="text" class="form-control" id="f1" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                    Valid first name is required.
-                </div>
             </div>
             <div class="container col-sm-6">
                 <label for="firstName" class="form-label">Наименование</label>
                 <input type="text" class="form-control" id="f2" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                    Valid first name is required.
-                </div>
             </div>
             <div class="container col-sm-6">
                 <label for="firstName" class="form-label">Тип юридического лица</label>
                 <div class="mt-3">
-                    <input type="radio" value="" checked name="a1" />  Юридическое лицо
-                    <input type="radio" value="" name="a1" />  Индивидуальный предприниматель
-                </div>
-                <div class="invalid-feedback">
-                    Valid first name is required.
+                    <input type="radio" value="Entity" checked name="a1" />  Юридическое лицо
+                    <input type="radio" value="Entrepreneur" name="a1" />  Индивидуальный предприниматель
                 </div>
             </div>
-            <div class="container col-sm-6 mt-5">
-                @for (int i = 0; i < length; i++)
+            <div class="container col-sm-6 mt-3">
+                <button type="button" class="form-control" onclick="">Добавить учредителя</button>
+            </div>
+            <div class="container col-sm-6">
+                @for (int i = 1; i <= 2; i++)
                 {
-                    await Html.PartialAsync("InputFormFounder");
+                    <h4 class="mt-5">Учредитель №@i</h4>
+                    @await Html.PartialAsync("InputFormFounder");
                 }
             </div>
+
             <div class="container col-sm-6 mt-3 mb-3">
                 <label for="firstName" class="form-label"></label>
                 <input type="submit" class="form-control" value="Добавить" />
