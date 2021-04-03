@@ -18,15 +18,15 @@ namespace TestWebAppForTheJob.Data
             }
             if (!context.Clients.Any())
             {
-                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders[1], Founders[2]});
-                new Client(inn: "123456789033", name: "Моэстро", isEntrepreneur: false, founder: new List<Founder>() { Founders[0], Founders[3] });
-                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders[4]});
+                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders["1"], Founders["2"]});
+                new Client(inn: "123456789033", name: "Моэстро", isEntrepreneur: false, founder: new List<Founder>() { Founders["0"], Founders["3"] });
+                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders["4"]});
             }
             context.SaveChanges();
         }
 
-        private static Dictionary<int, Founder> _founders;
-        public static Dictionary<int, Founder> Founders
+        private static Dictionary<string, Founder> _founders;
+        public static Dictionary<string, Founder> Founders
         {
             get
             {
@@ -34,13 +34,13 @@ namespace TestWebAppForTheJob.Data
                 {
                     var list = new Founder[]
                     {
-                        new Founder(clientId: 0, inn: "000004400401", fullName: "Александров Александр Александрович"),
-                        new Founder(clientId: 1, inn: "000000000001", fullName: "Иванов Иван Иванович"),
-                        new Founder(clientId: 2, inn: "000000000002", fullName: "Петров Петр Петрович"),
-                        new Founder(clientId: 3, inn: "000000300001", fullName: "Сидоров Сидор Сидорович"),
-                        new Founder(clientId: 4, inn: "060000304001", fullName: "Артёмов Артём Артёмович"),
+                        new Founder(clientId: "0", inn: "000004400401", fullName: "Александров Александр Александрович"),
+                        new Founder(clientId: "1", inn: "000000000001", fullName: "Иванов Иван Иванович"),
+                        new Founder(clientId: "2", inn: "000000000002", fullName: "Петров Петр Петрович"),
+                        new Founder(clientId: "3", inn: "000000300001", fullName: "Сидоров Сидор Сидорович"),
+                        new Founder(clientId: "4", inn: "060000304001", fullName: "Артёмов Артём Артёмович"),
                     };
-                    _founders = new Dictionary<int, Founder>();
+                    _founders = new Dictionary<string, Founder>();
                     foreach (var el in list)
                     {
                         _founders.Add(el.ClientId, el);

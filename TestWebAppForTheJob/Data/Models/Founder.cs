@@ -11,7 +11,7 @@ namespace TestWebAppForTheJob.Data.Models
         { 
 
         }
-        public Founder(int clientId, string inn, string fullName)
+        public Founder(string clientId, string inn, string fullName)
         {
             //Id = id;
             ClientId = clientId;
@@ -27,6 +27,6 @@ namespace TestWebAppForTheJob.Data.Models
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; } 
         public virtual Client Client { get; set; }
-        public int ClientId { get; set; }
+        public string ClientId { get; set; }
     }
 }
