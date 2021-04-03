@@ -34,5 +34,13 @@ namespace TestWebAppForTheJob.Controllers
             obj.AllClient = _allClients.Clients;
             return View(obj);
         }
+
+        public ViewResult InputFormFounder()
+        {
+            ViewBag.Title = "Форма добавления Учредителя";
+            InputFormFounderViewModel obj = new InputFormFounderViewModel();
+            obj.AllClient = _allClients.Clients;
+            return View(obj);
+        }
     }
 }
