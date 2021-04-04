@@ -52,16 +52,6 @@ namespace TestWebAppForTheJob.Controllers
                 Debug.WriteLine(client.DateAdded);
                 Debug.WriteLine(client.DateOfUpdate);
                 Debug.WriteLine(client.Founders);
-
-                //Context.AddRange(client);
-                //Context.SaveChanges();
-
-                var obj = new ClientListViewModel();
-                var s = new List<Client>() { client };
-                //s.AddRange(_allClients.Clients);
-                obj.AllClient = s;
-                //return View("AddedSuccessfully", obj);
-
                 db.Clients.Add(client);
                 await db.SaveChangesAsync();
                 return RedirectToAction("ListClients");
@@ -77,17 +67,5 @@ namespace TestWebAppForTheJob.Controllers
             ViewBag.Title = "Форма добавления Учредителя";
             return View(new Founder() { Inn = "6666666666" });
         }
-
-        public async Task<IActionResult> AddedSuccessfully()
-        {
-            ViewBag.Title = "Новый клиент удачно добавлен";
-            return View(await db.Clients.ToListAsync());
-        }
-        //[HttpPost]
-        //public IActionResult AddClient(string inn, string isEntrepreneur, string name)
-        //{
-        //    string authData = $"Inn: {inn}";
-        //    return Content(authData);
-        //}
     }
 }
