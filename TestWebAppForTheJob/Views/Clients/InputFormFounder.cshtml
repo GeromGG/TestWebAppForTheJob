@@ -1,10 +1,16 @@
-﻿<div id="Fou">
-    <div class="">
-        <label for="firstName" class="form-label">ИНН</label>
-        <input type="text" class="form-control" id="f1" placeholder="" value="" required="">
-    </div>
-    <div class="">
-        <label for="firstName" class="form-label">ФИО</label>
-        <input type="text" class="form-control" id="f2" placeholder="" value="" required="">
-    </div>
-</div>
+﻿@model Founder
+
+    <form asp-controller="Clients" asp-action="InputFormFounder" class="needs-validation">
+        <div class="">
+            <label asp-for="Inn" class="form-label"></label>
+            <input asp-for="Inn" class="form-control">
+        </div>
+        <div class="">
+            <label asp-for="FullName" class="form-label"></label>
+            <input asp-for="FullName" class="form-control">
+        </div>
+        <div class="">
+            <label class="form-label"></label>
+            <input type="submit" class="form-control" value="Добавить" />
+        </div>
+    </form>
