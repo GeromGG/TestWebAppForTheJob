@@ -1,22 +1,26 @@
-﻿@model Client
+﻿@model IEnumerable<Client>
 
 <div class="container mb-5">
     <h1 class="container col-sm-6 mt-5">Новый клиент удачно добавлен</h1>
     <div class="col-lg-4">
-        <p>Клиент: @Model.Name</p>
-        <p>ИНН: @Model.Inn</p>
-        <p>Тип: @Model.IsEntrepreneur.ToString()</p>
-        <p>Дата добавления: @Model.DateAdded</p>
-        <p>Дата обновления: @Model.DateOfUpdate</p>
-        <p>
-            Учредители:
-        </p>
+        @foreach (var item in Model)
+        {
+            <p>Клиент: @item.Name</p>
+            <p>ИНН: @item.Inn</p>
+            <p>Тип: @item.IsEntrepreneur.ToString()</p>
+            <p>Дата добавления: @item.DateAdded</p>
+            <p>Дата обновления: @item.DateOfUpdate</p>
+            <p>
+                Учредители:
+            </p>
+            @*@{
+                foreach (var founder in Model.Founders)
+                {
+                    <p>@founder.FullName</p>
+                }
+            }*@
+        }
 
-        @*@{
-            foreach (var founder in Model.Founders)
-            {
-                <p>@founder.FullName</p>
-            }
-        }*@
+
     </div>
 </div>

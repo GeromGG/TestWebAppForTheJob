@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,11 +16,13 @@ namespace TestWebAppForTheJob.Controllers
     {
         private readonly IAllClients _allClients;
         private readonly IClientFounders _clientFounders;
+        private AppDBContext db { get; set; }
 
-        public ClientsController(IAllClients allClients, IClientFounders clientFounders)
+        public ClientsController(IAllClients allClients, IClientFounders clientFounders, AppDBContext context)
         {
             _allClients = allClients;
             _clientFounders = clientFounders;
+            db = context;
         }
 
         public IActionResult ListClients()
@@ -37,7 +40,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
-        public IActionResult InputFormClient(Client client)
+        public async Task<IActionResult> InputFormClient(Client client)
         {
             if (ModelState.IsValid)
             {
@@ -50,13 +53,18 @@ namespace TestWebAppForTheJob.Controllers
                 Debug.WriteLine(client.DateOfUpdate);
                 Debug.WriteLine(client.Founders);
 
-                //context.AddRange(client);
-                //context.SaveChanges();
+                //Context.AddRange(client);
+                //Context.SaveChanges();
 
                 var obj = new ClientListViewModel();
                 var s = new List<Client>() { client };
-                obj.AllClient = _allClients.Clients;
-                return View("ListClients", obj);
+                //s.AddRange(_allClients.Clients);
+                obj.AllClient = s;
+                //return View("AddedSuccessfully", obj);
+
+                db.Clients.Add(client);
+                await db.SaveChangesAsync();
+                return RedirectToAction("ListClients");
             }
             else
             {
@@ -70,10 +78,10 @@ namespace TestWebAppForTheJob.Controllers
             return View(new Founder() { Inn = "6666666666" });
         }
 
-        public IActionResult AddedSuccessfully(Client client)
+        public async Task<IActionResult> AddedSuccessfully()
         {
             ViewBag.Title = "Новый клиент удачно добавлен";
-            return View();
+            return View(await db.Clients.ToListAsync());
         }
         //[HttpPost]
         //public IActionResult AddClient(string inn, string isEntrepreneur, string name)
