@@ -9,8 +9,9 @@ namespace TestWebAppForTheJob.Data.Models
     public class Founder
     {
         public Founder() 
-        { 
-
+        {
+            DateAdded = DateTime.Now;
+            DateOfUpdate = DateTime.Now;
         }
         public Founder(string clientId, string inn, string fullName)
         {

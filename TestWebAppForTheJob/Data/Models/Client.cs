@@ -12,7 +12,6 @@ namespace TestWebAppForTheJob.Data.Models
         {
             DateAdded = DateTime.Now;
             DateOfUpdate = DateTime.Now;
-            Founders = new List<Founder>();
         }
         public Client(string inn, string name, bool isEntrepreneur, List<Founder> founder)
         {

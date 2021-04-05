@@ -1,16 +1,27 @@
-﻿@model Founder
+﻿@model Client
 
-    <form asp-controller="Clients" asp-action="InputFormFounder" class="needs-validation">
-        <div class="">
-            <label asp-for="Inn" class="form-label"></label>
-            <input asp-for="Inn" class="form-control">
-        </div>
-        <div class="">
-            <label asp-for="FullName" class="form-label"></label>
-            <input asp-for="FullName" class="form-control">
-        </div>
-        <div class="">
-            <label class="form-label"></label>
-            <input type="submit" class="form-control" value="Добавить" />
-        </div>
-    </form>
+@{
+    var i = ViewData.Model;
+ }
+<div class="container mb-5">
+    <div class="row mt-5 mb-2">
+        <form asp-controller="Clients" asp-action="InputFormFounder" class="needs-validation">
+            <h4 class="mt-5">Учредитель №1</h4>
+            <div class="">
+                <label asp-for="@ViewData.Model.Founders.Last().Inn" class="form-label"></label>
+                <input asp-for="@ViewData.Model.Founders.Last().Inn" class="form-control">
+            </div>
+            <div class="">
+                <label asp-for="@ViewData.Model.Founders.Last().FullName" class="form-label"></label>
+                <input asp-for="@ViewData.Model.Founders.Last().FullName" class="form-control">
+            </div>
+            <div class="">
+                <label class="form-label"></label>
+                <input type="submit" class="form-control" onclick="" value="Сохранить учредителя" />
+            </div>
+        </form>
+
+        <h4 class="mt-5">@ViewData.Model.Inn</h4>
+        <h4 class="mt-5">@ViewData.Model.Name</h4>
+    </div>
+</div>

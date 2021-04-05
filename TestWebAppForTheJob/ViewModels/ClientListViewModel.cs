@@ -10,5 +10,7 @@ namespace TestWebAppForTheJob.ViewModels
     {
         public IEnumerable<Client> AllClient { get; set; }
         public string ClientFounder { get; set; }
+
+        public Client Client { get; set; }
     }
 }
