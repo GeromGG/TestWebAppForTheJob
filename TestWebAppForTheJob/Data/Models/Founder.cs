@@ -24,11 +24,11 @@ namespace TestWebAppForTheJob.Data.Models
 
         public int Id { get; set; }
         [Required]
-        [StringLength(30)]
+        [StringLength(12)]
         [Display(Name = "ИНН")]
         public string Inn { get; set; }
         [Required]
-        [StringLength(30)]
+        [StringLength(255)]
         [Display(Name = "ФИО")]
         public string FullName { get; set; }
         public DateTime DateAdded { get; private set; }

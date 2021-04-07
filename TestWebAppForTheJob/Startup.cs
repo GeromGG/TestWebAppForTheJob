@@ -55,6 +55,7 @@ namespace TestWebAppForTheJob
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 AppDBContext context = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+                context.Database.Migrate();
                 DBObjects.Initial(context);
             }
         }

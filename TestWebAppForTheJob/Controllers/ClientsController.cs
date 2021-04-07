@@ -65,7 +65,7 @@ namespace TestWebAppForTheJob.Controllers
         public IActionResult InputFormFounder()
         {
             ViewBag.Title = "Форма добавления Учредителя";
-            return View(new Founder() { Inn = "6666666666" });
+            return View(/*new Founder() { Inn = "6666666666" }*/);
         }
     }
 }
