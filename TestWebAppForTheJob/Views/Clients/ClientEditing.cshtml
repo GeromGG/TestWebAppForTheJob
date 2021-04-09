@@ -1,0 +1,32 @@
+﻿<div class="col-lg-4 mt-2 mb-2">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div>
+                <p>Клиент: @Model.Name</p>
+                <p>ИНН: @Model.Inn</p>
+                @{
+                    if (Model.IsEntrepreneur)
+                    {
+                        <p>Тип: Индивидуальный предприниматель</p>
+                    }
+                    else
+                    {
+                        <p>Тип: Юридическое лицо</p>
+                    }
+                }
+                <p>Дата добавления: @Model.DateAdded</p>
+                <p>Дата обновления: @Model.DateOfUpdate</p>
+                <p>
+                    Учредители:
+                </p>
+
+                @{
+                    foreach (var founder in Model.Founders)
+                    {
+                        <p>@founder.FullName</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

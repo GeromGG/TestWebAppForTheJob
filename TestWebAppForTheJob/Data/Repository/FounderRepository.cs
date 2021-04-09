@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,5 +16,7 @@ namespace TestWebAppForTheJob.Data.Repository
             _appDBContext = appDBContent;
         }
         public IEnumerable<Founder> AllFounders => _appDBContext.Founders;
+
+        public IEnumerable<Founder> GetClientFounders(int clientID) => _appDBContext.Founders.Where(a => a.ClientId == clientID.ToString()).Include(z => z.Client);
     }
 }

@@ -16,13 +16,11 @@ namespace TestWebAppForTheJob.Controllers
     {
         private readonly IAllClients _allClients;
         private readonly IClientFounders _clientFounders;
-        private AppDBContext db { get; set; }
 
-        public ClientsController(IAllClients allClients, IClientFounders clientFounders, AppDBContext context)
+        public ClientsController(IAllClients allClients, IClientFounders clientFounders)
         {
             _allClients = allClients;
             _clientFounders = clientFounders;
-            db = context;
         }
 
         public IActionResult ListClients()
@@ -31,6 +29,17 @@ namespace TestWebAppForTheJob.Controllers
             ClientListViewModel obj = new ClientListViewModel();
             obj.AllClient = _allClients.Clients;
             return View(obj);
+        }
+
+        [HttpPost]
+        public IActionResult ClientEditing(int clientId)
+        {
+            ViewBag.Title = "Редактирование клиента";
+            ClientEditingViewModels obj = new ClientEditingViewModels();
+            obj.Client = _allClients.GetObjectClient(clientId);
+
+            //obj.Client.Founders = _clientFounders.GetClientFounders(clientId);
+            return View(obj.Client);
         }
 
         public IActionResult InputFormClient()
@@ -52,8 +61,7 @@ namespace TestWebAppForTheJob.Controllers
                 Debug.WriteLine(client.DateAdded);
                 Debug.WriteLine(client.DateOfUpdate);
                 Debug.WriteLine(client.Founders);
-                db.Clients.Add(client);
-                await db.SaveChangesAsync();
+                _allClients.AddClient(client);
                 return RedirectToAction("ListClients");
             }
             else

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestWebAppForTheJob.Data;
 using TestWebAppForTheJob.Data.Interfaces;
+using TestWebAppForTheJob.Data.Models;
 using TestWebAppForTheJob.Data.Repository;
 
 namespace TestWebAppForTheJob
@@ -32,6 +34,13 @@ namespace TestWebAppForTheJob
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IAllClients, ClientRepository>();
             services.AddTransient<IClientFounders, FounderRepository>();
+
+
+    //        services.AddIdentity<Client, IdentityRole>(opts => {
+    //            opts.User.AllowedUserNameCharacters = 10;
+    //        })
+    //.AddEntityFrameworkStores<AppDBContext>();
+
 
         }
 

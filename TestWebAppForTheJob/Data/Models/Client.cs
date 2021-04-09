@@ -31,7 +31,7 @@ namespace TestWebAppForTheJob.Data.Models
 
         public int Id { get; set; } = 0;
         [Required]
-        [StringLength(12)]
+        [StringLength(12, ErrorMessage = "Поле {0} должно иметь минимум {2} и максимум {1} символов.", MinimumLength = 10)]
         [Display(Name = "INN")]
         public string Inn { get; set; }
         [Required]
@@ -41,7 +41,7 @@ namespace TestWebAppForTheJob.Data.Models
         public bool IsEntrepreneur { get; set; }  
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
-        public ICollection<Founder> Founders { get; set; }
+        public IEnumerable<Founder> Founders { get; set; }
 
         //public List<Founder> Founders { get; set; }
     }

@@ -20,6 +20,12 @@ namespace TestWebAppForTheJob.Data.Repository
         public IEnumerable<Client> GetEntity => _appDBContext.Clients.Where(p => !(p.IsEntrepreneur)).Include(c => c.Founders);
         public IEnumerable<Client> GetIndividualEntrepreneur => _appDBContext.Clients.Where(p => p.IsEntrepreneur).Include(c => c.Founders);
 
+        public void AddClient(Client client)
+        {
+            _appDBContext.Clients.Add(client);
+            _appDBContext.SaveChanges();
+        }
+
         public Client GetObjectClient(int clientID) => _appDBContext.Clients.FirstOrDefault(b => b.Id == clientID);
     }
 }

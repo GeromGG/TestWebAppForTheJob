@@ -12,5 +12,7 @@ namespace TestWebAppForTheJob.Data.Interfaces
         IEnumerable<Client> GetEntity { get;}
         IEnumerable<Client> GetIndividualEntrepreneur { get;}
         Client GetObjectClient(int clientID);
+
+        void AddClient(Client client);
     }
 }

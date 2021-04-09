@@ -6,9 +6,8 @@ using TestWebAppForTheJob.Data.Models;
 
 namespace TestWebAppForTheJob.ViewModels
 {
-    public class ClientListViewModel
+    public class ClientEditingViewModels
     {
-        public IEnumerable<Client> AllClient { get; set; }
         public Client Client { get; set; }
     }
 }
