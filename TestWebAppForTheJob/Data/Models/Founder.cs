@@ -7,11 +7,9 @@ namespace TestWebAppForTheJob.Data.Models
     {
         public Founder()
         {
-
         }
         public Founder(string clientId, string inn, string fullName)
         {
-            //Id = id;
             ClientId = clientId;
             Inn = inn;
             FullName = fullName;

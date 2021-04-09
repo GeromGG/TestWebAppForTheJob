@@ -6,6 +6,9 @@ namespace TestWebAppForTheJob.Data
 {
     public class AppDBContext : DbContext
     {
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Founder> Founders { get; set; }
+
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
 
@@ -20,8 +23,5 @@ namespace TestWebAppForTheJob.Data
         {
             Debug.Write(sql);
         }
-
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<Founder> Founders { get; set; }
     }
 }

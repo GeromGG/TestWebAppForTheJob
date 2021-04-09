@@ -13,8 +13,8 @@ namespace TestWebAppForTheJob
     public class Startup
     {
 
-        private IConfigurationRoot _confString;
-        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv)
+        private readonly IConfigurationRoot _confString;
+        public Startup(IWebHostEnvironment hostEnv)
         {
             _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
@@ -45,12 +45,10 @@ namespace TestWebAppForTheJob
                     template: "{controller=Clients}/{action=ListClients}/{id?}");
             });
 
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                AppDBContext context = scope.ServiceProvider.GetRequiredService<AppDBContext>();
-                context.Database.Migrate();
-                DBObjects.Initial(context);
-            }
+            using var scope = app.ApplicationServices.CreateScope();
+            AppDBContext context = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+            context.Database.Migrate();
+            DBObjects.Initial(context);
         }
     }
 }

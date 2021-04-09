@@ -13,10 +13,17 @@ namespace TestWebAppForTheJob.Data.Repository
         {
             _appDBContext = appDBContext;
         }
-        public IEnumerable<Client> Clients => _appDBContext.Clients.Include(c => c.Founders);
 
-        public IEnumerable<Client> GetEntity => _appDBContext.Clients.Where(p => !(p.IsEntrepreneur)).Include(c => c.Founders);
-        public IEnumerable<Client> GetIndividualEntrepreneur => _appDBContext.Clients.Where(p => p.IsEntrepreneur).Include(c => c.Founders);
+        public IEnumerable<Client> Clients => _appDBContext.Clients
+            .Include(c => c.Founders);
+
+        public IEnumerable<Client> GetEntity => _appDBContext.Clients
+            .Where(p => !(p.IsEntrepreneur))
+            .Include(c => c.Founders);
+
+        public IEnumerable<Client> GetIndividualEntrepreneur => _appDBContext.Clients
+            .Where(p => p.IsEntrepreneur)
+            .Include(c => c.Founders);
 
         public void AddClient(Client client)
         {

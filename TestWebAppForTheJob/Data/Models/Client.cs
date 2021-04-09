@@ -14,16 +14,11 @@ namespace TestWebAppForTheJob.Data.Models
         }
         public Client(string inn, string name, bool isEntrepreneur, List<Founder> founder)
         {
-            //Id = id;
             Inn = inn;
             Name = name;
             IsEntrepreneur = isEntrepreneur;
-
             DateAdded = DateTime.Now;
             DateOfUpdate = DateTime.Now;
-
-            //Founders = new List<Founder>();
-            //Founders.AddRange(founder);
             Founders = new List<Founder>(founder);
         }
 
@@ -40,7 +35,5 @@ namespace TestWebAppForTheJob.Data.Models
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
         public IEnumerable<Founder> Founders { get; set; }
-
-        //public List<Founder> Founders { get; set; }
     }
 }

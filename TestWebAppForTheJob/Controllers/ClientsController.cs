@@ -21,7 +21,7 @@ namespace TestWebAppForTheJob.Controllers
         public IActionResult ListClients()
         {
             ViewBag.Title = "Страница с клиентами";
-            ClientListViewModel obj = new ClientListViewModel();
+            var obj = new ClientListViewModel();
             obj.AllClient = _allClients.Clients;
             return View(obj);
         }
@@ -30,7 +30,7 @@ namespace TestWebAppForTheJob.Controllers
         public IActionResult ClientEditing(int clientId)
         {
             ViewBag.Title = "Редактирование клиента";
-            ClientEditingViewModels obj = new ClientEditingViewModels();
+            var obj = new ClientEditingViewModels();
             obj.Client = _allClients.GetObjectClient(clientId);
             return View(obj.Client);
         }
@@ -38,12 +38,11 @@ namespace TestWebAppForTheJob.Controllers
         [HttpPost]
         public async Task<IActionResult> ClientRemove(int clientId)
         {
-            ClientEditingViewModels obj = new ClientEditingViewModels();
+            var obj = new ClientEditingViewModels();
             obj.Client = _allClients.GetObjectClient(clientId);
             _allClients.RemoveClient(obj.Client);
             return RedirectToAction("ListClients");
         }
-
 
         public IActionResult InputFormClient()
         {
@@ -57,13 +56,6 @@ namespace TestWebAppForTheJob.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.Title = "Форма добавления клиента";
-                Debug.WriteLine(client.Id);
-                Debug.WriteLine(client.Inn);
-                Debug.WriteLine(client.Name);
-                Debug.WriteLine(client.IsEntrepreneur);
-                Debug.WriteLine(client.DateAdded);
-                Debug.WriteLine(client.DateOfUpdate);
-                Debug.WriteLine(client.Founders);
                 _allClients.AddClient(client);
                 return RedirectToAction("ListClients");
             }

@@ -15,6 +15,9 @@ namespace TestWebAppForTheJob.Data.Repository
         }
         public IEnumerable<Founder> AllFounders => _appDBContext.Founders;
 
-        public IEnumerable<Founder> GetClientFounders(int clientID) => _appDBContext.Founders.Where(a => a.ClientId == clientID.ToString()).Include(z => z.Client);
+        public IEnumerable<Founder> GetClientFounders(int clientID) => _appDBContext.Founders
+            .Where(a => a.ClientId == clientID
+            .ToString())
+            .Include(z => z.Client);
     }
 }
