@@ -26,6 +26,12 @@ namespace TestWebAppForTheJob.Data.Repository
             _appDBContext.SaveChanges();
         }
 
-        public Client GetObjectClient(int clientID) => _appDBContext.Clients.FirstOrDefault(b => b.Id == clientID);
+        public Client GetObjectClient(int clientID) => _appDBContext.Clients.Include(b => b.Founders).FirstOrDefault(b => b.Id == clientID);
+
+        public void RemoveClient(Client client)
+        {
+            _appDBContext.Clients.Remove(client);
+            _appDBContext.SaveChanges();
+        }
     }
 }

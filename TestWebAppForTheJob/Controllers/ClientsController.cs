@@ -37,10 +37,18 @@ namespace TestWebAppForTheJob.Controllers
             ViewBag.Title = "Редактирование клиента";
             ClientEditingViewModels obj = new ClientEditingViewModels();
             obj.Client = _allClients.GetObjectClient(clientId);
-
-            //obj.Client.Founders = _clientFounders.GetClientFounders(clientId);
             return View(obj.Client);
         }
+
+        [HttpPost]
+        public IActionResult ClientRemove(int clientId)
+        {
+            ClientEditingViewModels obj = new ClientEditingViewModels();
+            obj.Client = _allClients.GetObjectClient(clientId);
+            _allClients.RemoveClient(obj.Client);
+            return RedirectToAction("ListClients");
+        }
+
 
         public IActionResult InputFormClient()
         {
