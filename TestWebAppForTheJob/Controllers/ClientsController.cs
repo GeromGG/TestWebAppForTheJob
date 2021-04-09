@@ -18,20 +18,20 @@ namespace TestWebAppForTheJob.Controllers
             _clientFounders = clientFounders;
         }
 
-        public IActionResult ListClients()
+        public async Task<IActionResult> ListClients()
         {
             ViewBag.Title = "Страница с клиентами";
             var obj = new ClientListViewModel();
-            obj.AllClient = _allClients.Clients;
+            obj.AllClient = await _allClients.Clients();
             return View(obj);
         }
 
         [HttpPost]
-        public IActionResult ClientEditing(int clientId)
+        public async Task<IActionResult> ClientEditing(int clientId)
         {
             ViewBag.Title = "Редактирование клиента";
             var obj = new ClientEditingViewModels();
-            obj.Client = _allClients.GetObjectClient(clientId);
+            obj.Client = await _allClients.GetObjectClient(clientId);
             return View(obj.Client);
         }
 
@@ -39,7 +39,7 @@ namespace TestWebAppForTheJob.Controllers
         public async Task<IActionResult> ClientRemove(int clientId)
         {
             var obj = new ClientEditingViewModels();
-            obj.Client = _allClients.GetObjectClient(clientId);
+            obj.Client = await _allClients.GetObjectClient(clientId);
             _allClients.RemoveClient(obj.Client);
             return RedirectToAction("ListClients");
         }
@@ -51,7 +51,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> InputFormClient(Client client)
+        public IActionResult InputFormClient(Client client)
         {
             if (ModelState.IsValid)
             {
