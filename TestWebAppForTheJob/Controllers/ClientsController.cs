@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,8 @@ namespace TestWebAppForTheJob.Controllers
     {
         private readonly IAllClients _allClients;
         private readonly IClientFounders _clientFounders;
+
+        //public IJSRuntime JSRuntime { get; set; }
 
         public ClientsController(IAllClients allClients, IClientFounders clientFounders)
         {
@@ -41,8 +44,12 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
-        public IActionResult ClientRemove(int clientId)
+        public async Task<IActionResult> ClientRemove(int clientId)
         {
+            //if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the client?"))
+            //{
+            //    return View(); 
+            //}
             ClientEditingViewModels obj = new ClientEditingViewModels();
             obj.Client = _allClients.GetObjectClient(clientId);
             _allClients.RemoveClient(obj.Client);

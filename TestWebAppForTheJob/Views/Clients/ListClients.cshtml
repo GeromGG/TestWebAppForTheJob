@@ -36,7 +36,7 @@
                             <form asp-controller="Clients">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="submit" asp-controller="Clients" asp-action="ClientRemove" asp-route-clientId="@client.Id" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                        <button type="button" onclick="DeleteWin(@client.Id);" class="btn btn-sm btn-outline-secondary">Удалить</button>
                                         <button type="submit" asp-controller="Clients" asp-action="ClientEditing" asp-route-clientId="@client.Id" class="btn btn-sm btn-outline-secondary">Отредактировать</button>
                                     </div>
                                     <small class="text-muted">9 mins</small>
@@ -50,3 +50,16 @@
         }
     </div>
 </div>
+<script language='JavaScript'>
+    function DeleteWin(id) {
+        var res = confirm('Вы уверены, что хотите удалить клиента?');
+        if (res) {
+            let form = document.createElement('form');
+            form.action = '/Clients/ClientRemove';
+            form.method = 'post';
+            form.innerHTML = '<input name="clientId" value="' + id + '">';
+            document.body.append(form);
+            form.submit();
+        }
+    }
+</script>

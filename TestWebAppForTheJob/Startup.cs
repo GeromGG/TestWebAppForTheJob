@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,14 +35,6 @@ namespace TestWebAppForTheJob
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IAllClients, ClientRepository>();
             services.AddTransient<IClientFounders, FounderRepository>();
-
-
-    //        services.AddIdentity<Client, IdentityRole>(opts => {
-    //            opts.User.AllowedUserNameCharacters = 10;
-    //        })
-    //.AddEntityFrameworkStores<AppDBContext>();
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
