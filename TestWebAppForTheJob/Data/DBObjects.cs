@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TestWebAppForTheJob.Data.Models;
 
 namespace TestWebAppForTheJob.Data
@@ -19,9 +15,9 @@ namespace TestWebAppForTheJob.Data
             if (!context.Clients.Any())
             {
                 context.AddRange(
-                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders["1"], Founders["2"]}),
+                new Client(inn: "123456789000", name: "ФондИвест", isEntrepreneur: false, founder: new List<Founder>() { Founders["1"], Founders["2"] }),
                 new Client(inn: "123456789033", name: "Моэстро", isEntrepreneur: false, founder: new List<Founder>() { Founders["0"], Founders["3"] }),
-                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders["4"]})
+                new Client(inn: "123456789056", name: "ГолдБест", isEntrepreneur: true, founder: new List<Founder>() { Founders["4"] })
                 );
             }
             context.SaveChanges();

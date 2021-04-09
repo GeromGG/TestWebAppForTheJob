@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestWebAppForTheJob.Data.Models
 {
     public class Founder
     {
-        public Founder() 
-        { 
+        public Founder()
+        {
 
         }
         public Founder(string clientId, string inn, string fullName)
@@ -32,7 +29,7 @@ namespace TestWebAppForTheJob.Data.Models
         [Display(Name = "ФИО")]
         public string FullName { get; set; }
         public DateTime DateAdded { get; private set; }
-        public DateTime DateOfUpdate { get; set; } 
+        public DateTime DateOfUpdate { get; set; }
         public virtual Client Client { get; set; }
         public string ClientId { get; set; }
     }

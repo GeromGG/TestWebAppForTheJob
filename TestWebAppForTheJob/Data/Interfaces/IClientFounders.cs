@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TestWebAppForTheJob.Data.Models;
 
 namespace TestWebAppForTheJob.Data.Interfaces

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestWebAppForTheJob.Data.Models
 {
@@ -38,7 +36,7 @@ namespace TestWebAppForTheJob.Data.Models
         [StringLength(50)]
         [Display(Name = "Наименование")]
         public string Name { get; set; }
-        public bool IsEntrepreneur { get; set; }  
+        public bool IsEntrepreneur { get; set; }
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
         public IEnumerable<Founder> Founders { get; set; }
