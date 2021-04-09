@@ -6,9 +6,9 @@ namespace TestWebAppForTheJob.Data.Interfaces
 {
     public interface IAllClients
     {
-        Task<IEnumerable<Client>> Clients();
-        Task<IEnumerable<Client>> GetEntity();
-        Task<IEnumerable<Client>> GetIndividualEntrepreneur();
+        Task<IReadOnlyList<Client>> Clients();
+        Task<IReadOnlyList<Client>> GetEntity();
+        Task<IReadOnlyList<Client>> GetIndividualEntrepreneur();
         Task<Client> GetObjectClient(int clientID);
         void AddClient(Client client);
         void RemoveClient(Client client);

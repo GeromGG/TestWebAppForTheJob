@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TestWebAppForTheJob.Data.Interfaces;
 using TestWebAppForTheJob.Data.Models;
 
@@ -13,11 +14,11 @@ namespace TestWebAppForTheJob.Data.Repository
         {
             _appDBContext = appDBContent;
         }
-        public IEnumerable<Founder> AllFounders => _appDBContext.Founders;
+        public async Task<IReadOnlyList<Founder>> AllFounders() => await _appDBContext.Founders.ToListAsync();
 
-        public IEnumerable<Founder> GetClientFounders(int clientID) => _appDBContext.Founders
+        public async Task<IReadOnlyList<Founder>> GetClientFounders(int clientID) => await _appDBContext.Founders
             .Where(a => a.ClientId == clientID
             .ToString())
-            .Include(z => z.Client);
+            .Include(z => z.Client).ToListAsync();
     }
 }

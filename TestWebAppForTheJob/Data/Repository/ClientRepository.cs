@@ -15,14 +15,15 @@ namespace TestWebAppForTheJob.Data.Repository
             _appDBContext = appDBContext;
         }
 
-        public async Task<IEnumerable<Client>> Clients() => await _appDBContext.Clients
+        public async Task<IReadOnlyList<Client>> Clients() => await _appDBContext.Clients
             .Include(c => c.Founders).ToListAsync();
 
-        public async Task<IEnumerable<Client>> GetEntity() => await _appDBContext.Clients
+        
+        public async Task<IReadOnlyList<Client>> GetEntity() => await _appDBContext.Clients
             .Where(p => !(p.IsEntrepreneur))
             .Include(c => c.Founders).ToListAsync();
 
-        public async Task<IEnumerable<Client>> GetIndividualEntrepreneur() => await _appDBContext.Clients
+        public async Task<IReadOnlyList<Client>> GetIndividualEntrepreneur() => await _appDBContext.Clients
             .Where(p => p.IsEntrepreneur)
             .Include(c => c.Founders).ToListAsync();
 
