@@ -21,7 +21,7 @@ namespace TestWebAppForTheJob
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDBContext>(obtions => obtions.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDBContext>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddMvc();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddTransient<IAllClients, ClientRepository>();
