@@ -21,7 +21,7 @@
                                     }
                                 }
                                 <p>Дата добавления: @client.DateAdded</p>
-                                <p>Дата обновления: @client.DateOfUpdate</p>
+                                @*<p>Дата обновления: @client.DateOfUpdate</p>*@
                                 <p>
                                     Учредители:
                                 </p>
@@ -39,7 +39,8 @@
                                         <button type="button" onclick="DeleteWin(@client.Id);" class="btn btn-sm btn-outline-secondary">Удалить</button>
                                         <button type="submit" asp-controller="Clients" asp-action="ClientEditing" asp-route-clientId="@client.Id" class="btn btn-sm btn-outline-secondary">Отредактировать</button>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+                                    <small class="text-muted">@String.Format("{0:dd.MM.yyyy}", client.DateOfUpdate.Date)<br /></small>
+                                    <small class="text-muted">@String.Format("{0:HH.mm}", client.DateOfUpdate)</small>
                                 </div>
                             </form>
                         </div>
