@@ -82,11 +82,8 @@ namespace TestWebAppForTheJob.Controllers
                     AllClientNoEntrepreneur.Add(item);
                 }
             }
-
-
             ViewBag.Clients = new SelectList(AllClientNoEntrepreneur, "Id", "Name");
             return View();
-
         }
 
         [HttpPost]

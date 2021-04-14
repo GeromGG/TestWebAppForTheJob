@@ -18,7 +18,7 @@ namespace TestWebAppForTheJob.Data.Repository
         public async Task<IReadOnlyList<Client>> Clients() => await _appDBContext.Clients
             .Include(c => c.Founders).ToListAsync();
 
-        
+
         public async Task<IReadOnlyList<Client>> GetEntity() => await _appDBContext.Clients
             .Where(p => !(p.IsEntrepreneur))
             .Include(c => c.Founders).ToListAsync();
