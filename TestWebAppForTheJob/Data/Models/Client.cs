@@ -34,6 +34,6 @@ namespace TestWebAppForTheJob.Data.Models
         public bool IsEntrepreneur { get; set; }
         public DateTime DateAdded { get; private set; }
         public DateTime DateOfUpdate { get; set; }
-        public IEnumerable<Founder> Founders { get; set; }
+        public List<Founder> Founders { get; set; }
     }
 }

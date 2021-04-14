@@ -77,7 +77,7 @@ namespace TestWebAppForTheJob.Controllers
             var AllClientNoEntrepreneur = new List<Client>();
             foreach (var item in obj.AllClient)
             {
-                if (!item.IsEntrepreneur)
+                if (!item.IsEntrepreneur || item.Founders.Count < 1)
                 {
                     AllClientNoEntrepreneur.Add(item);
                 }
