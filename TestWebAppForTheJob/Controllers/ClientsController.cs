@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestWebAppForTheJob.Data.Interfaces;
 using TestWebAppForTheJob.Data.Models;
@@ -41,6 +43,7 @@ namespace TestWebAppForTheJob.Controllers
             var obj = new ClientEditingViewModels();
             obj.Client = await _allClients.GetObjectClient(clientId);
             _allClients.RemoveClient(obj.Client);
+            _clientFounders.RemoveFounders(obj.Client);
             return RedirectToAction("ListClients");
         }
 
@@ -56,8 +59,9 @@ namespace TestWebAppForTheJob.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.Title = "Форма добавления клиента";
+
                 _allClients.AddClient(client);
-                return RedirectToAction("ListClients");
+                return RedirectToAction("InputFormFounder");
             }
             else
             {
@@ -65,10 +69,41 @@ namespace TestWebAppForTheJob.Controllers
             }
         }
 
-        public IActionResult InputFormFounder()
+        public async Task<IActionResult> InputFormFounder()
         {
-            ViewBag.Title = "Форма добавления Учредителя";
-            return View(/*new Founder() { Inn = "6666666666" }*/);
+            ViewBag.Title = "Форма добавления учредителя";
+            var obj = new ClientListViewModel();
+            obj.AllClient = await _allClients.Clients();
+            var AllClientNoEntrepreneur = new List<Client>();
+            foreach (var item in obj.AllClient)
+            {
+                if (!item.IsEntrepreneur)
+                {
+                    AllClientNoEntrepreneur.Add(item);
+                }
+            }
+
+
+            ViewBag.Clients = new SelectList(AllClientNoEntrepreneur, "Id", "Name");
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InputFormFounder(Founder founder)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.Title = "Форма добавления учредителя";
+                var client = await _allClients.GetObjectClient(Int16.Parse(founder.ClientId));
+                founder.Client = client;
+                _clientFounders.AddFounder(founder);
+                return RedirectToAction("ListClients");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

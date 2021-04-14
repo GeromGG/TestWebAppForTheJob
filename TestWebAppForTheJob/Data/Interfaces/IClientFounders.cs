@@ -8,5 +8,8 @@ namespace TestWebAppForTheJob.Data.Interfaces
     {
         Task<IReadOnlyList<Founder>> AllFounders();
         Task<IReadOnlyList<Founder>> GetClientFounders(int clientID);
+        void AddFounder(Founder founder);
+        void RemoveFounder(Founder founder);
+        void RemoveFounders(Client client);
     }
 }
