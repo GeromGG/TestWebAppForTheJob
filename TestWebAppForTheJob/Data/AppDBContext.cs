@@ -21,15 +21,29 @@ namespace TestWebAppForTheJob.Data
             var allEntity = ChangeTracker.Entries().Where(x => x.State == EntityState.Added || x.State == EntityState.Modified);
             foreach (var item in allEntity)
             {
-                if (item.Entity is Client client)
+                if (item.Entity is not null)
                 {
-                    client.DateOfUpdate = DateTime.Now;
+                    if (item.Entity is Client client)
+                    {
+                        if (client is not null)
+                        {
+                            client.DateOfUpdate = DateTime.Now;
+                        }
+                    }
+                    if (item.Entity is Founder founder)
+                    {
+                        if (founder is not null)
+                        {
+                            if (founder.Client is not null)
+                            {
+                                founder.Client.DateOfUpdate = DateTime.Now;
+                            }
+                            founder.DateOfUpdate = DateTime.Now;
+                        }
+
+                    }
                 }
-                if (item.Entity is Founder founder)
-                {
-                    founder.Client.DateOfUpdate = DateTime.Now;
-                    founder.DateOfUpdate = DateTime.Now;
-                }
+
             }
 
         }
