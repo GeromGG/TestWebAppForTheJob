@@ -29,6 +29,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ClientEditing(int clientId)
         {
             ViewBag.Title = "Редактирование клиента";
@@ -38,6 +39,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ClientRemove(int clientId)
         {
             var obj = new ClientEditingViewModels();
@@ -54,6 +56,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult InputFormClient(Client client)
         {
             if (ModelState.IsValid)
@@ -87,6 +90,7 @@ namespace TestWebAppForTheJob.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> InputFormFounder(Founder founder)
         {
             if (ModelState.IsValid)
@@ -99,6 +103,17 @@ namespace TestWebAppForTheJob.Controllers
             }
             else
             {
+                var obj = new ClientListViewModel();
+                obj.AllClient = await _allClients.Clients();
+                var AllClientNoEntrepreneur = new List<Client>();
+                foreach (var item in obj.AllClient)
+                {
+                    if (!item.IsEntrepreneur || item.Founders.Count < 1)
+                    {
+                        AllClientNoEntrepreneur.Add(item);
+                    }
+                }
+                ViewBag.Clients = new SelectList(AllClientNoEntrepreneur, "Id", "Name");
                 return View();
             }
         }

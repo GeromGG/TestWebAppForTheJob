@@ -20,12 +20,14 @@ namespace TestWebAppForTheJob.Data.Models
         }
 
         public int Id { get; set; }
-        [Required]
-        [StringLength(12)]
+        [Required(ErrorMessage = "Поле должно быть заполнено")]
+        [StringLength(maximumLength: 12, /*ErrorMessage = "Поле {0} должно иметь минимум {2} и максимум {1} символов.",*/ MinimumLength = 10)]
+        [RegularExpression(@"^[0-9]{12}|[0-9]{10}$", ErrorMessage = "ИНН должен состоять из 10 или 12 цифр")]
         [Display(Name = "ИНН")]
         public string Inn { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть заполнено")]
         [StringLength(255)]
+        [RegularExpression(@"^[a-zA-ZА-Яа-я""'\s-]*$", ErrorMessage = "Введены недопустимые символы")] //[RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [Display(Name = "ФИО")]
         public string FullName { get; set; }
         public DateTime DateAdded { get; private set; }

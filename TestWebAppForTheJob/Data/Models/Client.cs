@@ -23,12 +23,14 @@ namespace TestWebAppForTheJob.Data.Models
         }
 
         public int Id { get; set; } = 0;
-        [Required]
-        [StringLength(12, ErrorMessage = "Поле {0} должно иметь минимум {2} и максимум {1} символов.", MinimumLength = 10)]
+        [Required(ErrorMessage = "Поле должно быть заполнено")]
+        [StringLength(maximumLength: 12, /*ErrorMessage = "Поле {0} должно иметь минимум {2} и максимум {1} символов.",*/ MinimumLength = 10)]
+        [RegularExpression(@"^[0-9]{12}|[0-9]{10}$", ErrorMessage = "ИНН должен состоять из 10 или 12 цифр")]
         [Display(Name = "INN")]
         public string Inn { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть заполнено")]
         [StringLength(50)]
+        [RegularExpression(@"^[a-zA-ZА-Яа-я0-9""'\s-]*$", ErrorMessage = "Введены недопустимые символы")]
         [Display(Name = "Наименование")]
         public string Name { get; set; }
         public bool IsEntrepreneur { get; set; }

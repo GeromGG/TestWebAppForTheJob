@@ -12,5 +12,5 @@ body {
 }
 
 .content-1 {
-    min-height: calc(70vh - 40px);
+    min-height: calc(70vh);
 }

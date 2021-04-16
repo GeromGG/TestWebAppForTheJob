@@ -9,14 +9,17 @@
                 <select asp-for="ClientId" asp-items="ViewBag.Clients" class="form-select">
                     <option selected="selected" disabled="disabled">Выберете клиента</option>
                 </select>
+                <span asp-validation-for="ClientId" class="text-danger" />
             </div>
             <div class="container col-sm-6">
                 <label asp-for="Inn" class="form-label"></label>
                 <input asp-for="Inn" class="form-control">
+                <span asp-validation-for="Inn" class="text-danger" />
             </div>
             <div class="container col-sm-6">
                 <label asp-for="FullName" class="form-label"></label>
                 <input asp-for="FullName" class="form-control">
+                <span asp-validation-for="FullName" class="text-danger" />
             </div>
             <div class="container col-sm-6">
                 <label class="form-label"></label>
@@ -25,3 +28,7 @@
         </form>
     </div>
 </div>
+@section scripts{
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+}
